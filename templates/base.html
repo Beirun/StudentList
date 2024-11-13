@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
+    {%block head%} {%endblock%}
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-box title">
+                <h1 class="header-title">BOOK INFORMATION</h1>
+            </div>
+            <div class="header-box button">
+                <a class="header-button" href="/">Home</a>
+                <a class="header-button" href="/list">List</a>
+            </div>
+        </div>
+        {%block body%} {%endblock%}
+
+    </div>
+    <div class=" footer">
+        &copy; copyright 2024 Bernard Jay D. Orillo
+    </div>
+</body>
+</html>
