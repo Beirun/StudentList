@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, flash
 from dbhelper import *
 
 app = Flask(__name__)
@@ -13,7 +13,6 @@ def index():
         idnos.append(fields[0])
     return render_template('index.html', idnos=idnos)
 
-
 @app.route('/save', methods=['POST'])
 def save():
     idno = request.form['idnoentered'] 
@@ -22,7 +21,11 @@ def save():
     course = request.form['courseentered'] 
     level = request.form['levelentered'] 
     image = 'static/images/'+idno+'.jpg'
+    if not idno or not lastname or not firstname or not course or not level:
+        flash('All fields are required!')
+        return redirect(url_for('index'))
     postprocess("INSERT INTO students (idno,lastname,firstname,course,level,image) VALUES ('"+idno+"','"+lastname+"','"+firstname+"','"+course+"','"+level+"','"+image+"');")
+    flash('Student record added successfully!')
     return redirect(url_for('index'))
 
 @app.route('/saveimage', methods=['POST'])

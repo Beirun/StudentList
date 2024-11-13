@@ -3,7 +3,8 @@
 {%block body%}
 
 <div className="content">
-    <div class="book-list">
+    <div class="student-list">
+        {% if students %}
         <table class="w3-table-all" style="border-collapse: separate;">
             <tr class="sticky-header">
                 <th>IDNO</th>
@@ -26,6 +27,9 @@
             </tr>
             {% endfor%}
         </table>
+        {% else %}
+        <p class ="w3-center w3-display-middle w3-xxlarge w3-bold" style="font-weight: 800;">NO STUDENT FOUND</p>
+        {% endif %}
     </div>
 </div>
 {%endblock%}
